@@ -1,0 +1,17 @@
+# Maintainer: Zijung Chueh <i@zijung.me>
+
+pkgname=zijung-archlinux-keyring
+pkgver=20181010
+pkgrel=1
+pkgdesc='Zijung Arch Linux PGP keyring'
+arch=('any')
+url='https://github.com/zijung/zijung-archlinux-keyring'
+license=(GPL)
+install=$pkgname.install
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/zijung/zijung-archlinux-keyring/archive/${pkgver}.tar.gz)
+sha512sums=('cce3e324c19c8d8b07c3e3fde3a8878ad202862279227b40efd2b3a5a747728547e7e4b263956e28ef67bb21e573f4e9e3154c51821df71561aae8a5afbbe553')
+
+package() {
+  cd $pkgname-$pkgver
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+}
